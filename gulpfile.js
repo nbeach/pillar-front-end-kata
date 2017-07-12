@@ -21,6 +21,7 @@ const tasks = [
     },
     {
         name: "template",
+        watch: join(sourcePath, "**/*"),
         path: join(sourcePath, "index.pug"),
         steps: path => () => gulp.src(path)
             .pipe(pug({}))
@@ -41,9 +42,9 @@ const tasks = [
     },
     {
         name: "image",
-        path: [join(sourcePath, 'images/**/*')],
+        path: [join(sourcePath, 'image/**/*')],
         steps: path => () => gulp.src(path)
-            .pipe(gulp.dest(join(outputPath, '/images')))
+            .pipe(gulp.dest(join(outputPath, '/image')))
     },
     {
         name: "font",
@@ -57,7 +58,7 @@ tasks.forEach(task => gulp.task(task.name, task.steps(task.path)));
 
 gulp.task('watch', () => tasks
     .filter(task => task.name !== "clean")
-    .forEach(task => gulp.watch(task.path, [task.name])));
+    .forEach(task => gulp.watch(task.watch ? task.watch : task.path, [task.name])));
 
 gulp.task('default', _.chain(tasks)
     .map(task => task.name)
