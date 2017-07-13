@@ -1,3 +1,22 @@
-.logo {
-  width: 150px;
+header {
+
+  .logo {
+    width: 100px;
+  }
+
+  .menu-item {
+    border-bottom: 4px solid transparent;
+
+    .hover-color(green, @brand-green);
+    .hover-color(orange, @brand-orange);
+    .hover-color(blue, @brand-blue);
+    .hover-color(red, @brand-red);
+  }
+
+  .hover-color(@name, @hover-color) {
+    &.@{name}:hover {
+      border-bottom-color: @hover-color;
+    }
+  }
+
 }
