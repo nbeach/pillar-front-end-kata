@@ -1,20 +1,31 @@
 header {
+  margin: 30px 10px 30px 10px;
 
   .logo {
     width: 100px;
   }
 
   .menu-item {
-    border-bottom: 4px solid transparent;
+    border-bottom: 3px solid transparent;
+    margin: 0px 20px 0px 20px;
+    padding-bottom: 10px;
 
-    .hover-color(green, @brand-green);
-    .hover-color(orange, @brand-orange);
-    .hover-color(blue, @brand-blue);
-    .hover-color(red, @brand-red);
+    color: @text-muted;
+    text-decoration: none;
+
+    &:hover, &:active, &.selected {
+      color: @text-color;
+      text-decoration: none;
+    }
+
+    .accent-bar(green, @brand-green);
+    .accent-bar(orange, @brand-orange);
+    .accent-bar(blue, @brand-blue);
+    .accent-bar(red, @brand-red);
   }
 
-  .hover-color(@name, @hover-color) {
-    &.@{name}:hover {
+  .accent-bar(@name, @hover-color) {
+    &.@{name}:hover, &.@{name}.selected {
       border-bottom-color: @hover-color;
     }
   }
